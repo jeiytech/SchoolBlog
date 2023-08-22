@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:SchoolBlog.Models"
+             xmlns:local2="clr-namespace:SchoolBlog.CustomText"
+             x:Class="SchoolBlog.Views.ChatPage"
+             Title="ChatPage">
+
+    <ContentPage.Resources>
+        <local2:TruncateConverter x:Key="TruncateConverter" />
+    </ContentPage.Resources>
+
+    <Grid BackgroundColor="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackLayout Grid.Row="0" x:Name="headerGrid" BackgroundColor="Transparent" TranslationY="0">
+            <!-- Sticky Header -->
+            <Grid Padding="15, 8, 15, 8">
+                <StackLayout Spacing="20" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Frame
+                    Padding="1, -10, 1, -10" CornerRadius="30"
+                    MinimumHeightRequest="30" HeightRequest="30" MaximumHeightRequest="100"
+                    MinimumWidthRequest="30" WidthRequest="30" MaximumWidthRequest="100"
+                    HorizontalOptions="Start">
+
+                        <Image Source="https://i0.wp.com/therighthairstyles.com/wp-content/uploads/2021/04/1-black-bob-with-finger-coils.jpg?" Aspect="AspectFit"/>
+                    </Frame>
+
+                    <Frame
+                    Padding="8" MinimumHeightRequest="35"
+                    HorizontalOptions="FillAndExpand"  CornerRadius="50"
+                    BackgroundColor="#EFF3F4" BorderColor="#EFF3F4">
+
+                        <Label
+                        Text="Search Direct Message" TextColor="#556572"
+                        FontSize="15" FontFamily="TimesNewRoman"/>
+
+                    </Frame>
+
+                    <ImageButton Source="{StaticResource IconBookSkull}"
+                                 HorizontalOptions="End" VerticalOptions="Center"
+                                 HeightRequest="30" MinimumHeightRequest="30"
+                                 SemanticProperties.Hint="Archive" SemanticProperties.HeadingLevel="Level1"/>
+                </StackLayout>
+
+
+            </Grid>
+            <BoxView Color="LightGray" HeightRequest="1" HorizontalOptions="FillAndExpand" Margin="-16,0"/>
+        </StackLayout>
+
+        <!-- Blog Posts -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="16">
+                <CollectionView x:Name="MessagesListView">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <VerticalStackLayout Padding="10, 3" Spacing="8">
+                                <!-- Blog Post 1 -->
+                                <StackLayout>
+
+                                    <HorizontalStackLayout Spacing="8">
+                                        <Frame
+                                            Padding="1, -10, 1, -10" CornerRadius="30"
+                                            MinimumHeightRequest="60" HeightRequest="60" MaximumHeightRequest="100"
+                                            MinimumWidthRequest="60" WidthRequest="60" MaximumWidthRequest="100"
+                                            HorizontalOptions="Start" VerticalOptions="Start">
+
+                                            <Image Source="{Binding Image}" Aspect="AspectFill"/>
+                                        </Frame>
+
+                                        <Label FontSize="15"
+                                           HorizontalOptions="Start"
+                                           Margin="0, 2, 0, 0">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding ProfileName}" TextColor="{StaticResource Gray900}"/>
+                                                    <Span Text=" ✔ "/>
+                                                    <Span Text="{Binding Username}" FontFamily="Arial" TextColor="{StaticResource Gray500}"/>
+                                                    <Span Text="{Binding Time}" FontFamily="OpenSansSemibold" TextColor="{StaticResource Gray500}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                    </HorizontalStackLayout>
+
+                                    <VerticalStackLayout Margin="70, -35, 0, 0" Spacing="8">
+                                        <Label Text="{Binding Text, Converter={StaticResource TruncateConverter}}"
+                                               TextColor="{StaticResource Gray400}"
+                                               FontFamily="OpenSansRegular"
+                                           FontSize="Body"
+                                           LineBreakMode="WordWrap"
+                                           MaxLines="2"/>
+                                        <BoxView Color="LightGray" HeightRequest="1" HorizontalOptions="FillAndExpand" Margin="-10,0"/>
+                                    </VerticalStackLayout>
+                                </StackLayout>
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

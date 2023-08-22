@@ -1,0 +1,45 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SchoolBlog"
+             xmlns:models="clr-namespace:SchoolBlog.Models"
+             x:Class="SchoolBlog.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <FontImageSource x:Key="IconHome"
+                             FontFamily="FaSolid"
+                             Glyph="{x:Static models:FaSolidIcons.House}"
+                             Color="Black"
+                             Size="20" />
+
+            <FontImageSource x:Key="IconBookSkull"
+                             FontFamily="FaSolid"
+                             Glyph="{x:Static models:FaSolidIcons.BookSkull}"
+                             Color="Black"
+                             Size="24" />
+
+            <FontImageSource x:Key="IconEnvelope"
+                             FontFamily="FaSolid"
+                             Glyph="{x:Static models:FaSolidIcons.Envelope}"
+                             Color="Black"
+                             Size="24" />
+
+            <FontImageSource x:Key="IconGroup"
+                             FontFamily="FaSolid"
+                             Glyph="{x:Static models:FaSolidIcons.UserGroup}"
+                             Color="Black"
+                             Size="24" />
+
+            <FontImageSource x:Key="IconComment"
+                             FontFamily="FaRegular"
+                             Glyph="{x:Static models:FaRegularIcons.Comment}"
+                             Color="Black"
+                             Size="24" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

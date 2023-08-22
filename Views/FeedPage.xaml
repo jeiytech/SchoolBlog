@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SchoolBlog.Views.FeedPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:models="clr-namespace:SchoolBlog.Models"
+             Title="FeedPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackLayout Grid.Row="0" x:Name="headerGrid" TranslationY="0">
+            <!-- Sticky Header -->
+            <Grid Padding="15, 8, 15, 8">
+                <Frame
+                    Padding="1, -10, 1, -10" CornerRadius="30"
+                    MinimumHeightRequest="40" HeightRequest="40" MaximumHeightRequest="100"
+                    MinimumWidthRequest="40" WidthRequest="40" MaximumWidthRequest="100"
+                    HorizontalOptions="Start" VerticalOptions="Start">
+
+                    <Image Source="https://i0.wp.com/therighthairstyles.com/wp-content/uploads/2021/04/1-black-bob-with-finger-coils.jpg?" Aspect="AspectFit"/>
+                </Frame>
+
+                <Label
+                    FontFamily="MaterialDesign"
+                    Text="{x:Static models:MaterialDesignIcons.BuildingFlag}"
+                    TextColor="Black"
+                    HorizontalOptions="Center"
+                    FontSize="24"
+                    VerticalTextAlignment="Center"/>
+                
+
+
+            </Grid>
+            <BoxView Color="LightGray" HeightRequest="1" HorizontalOptions="FillAndExpand" Margin="-16,0"/>
+        </StackLayout>
+
+        <!-- Blog Posts -->
+        <ScrollView Grid.Row="1" Scrolled="ScrollView_Scrolled" x:Name="Mainview">
+            <VerticalStackLayout Spacing="16">
+                <CollectionView x:Name="MyFeedView">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <VerticalStackLayout Padding="10, 8, 10, 0" Spacing="10">
+                                <!-- Blog Post 1 -->
+                                <StackLayout>
+
+                                    <HorizontalStackLayout Spacing="8">
+                                        <Frame
+                                            Padding="1, -10, 1, -10" CornerRadius="30"
+                                            MinimumHeightRequest="43" HeightRequest="43" MaximumHeightRequest="100"
+                                            MinimumWidthRequest="43" WidthRequest="43" MaximumWidthRequest="100"
+                                            HorizontalOptions="Start" VerticalOptions="Start">
+
+                                            <Image Source="{Binding ProfileImage}" Aspect="AspectFill"/>
+                                        </Frame>
+
+                                        <Label FontSize="15"
+                                           HorizontalOptions="Start"
+                                           Margin="0, 2, 0, 0">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding ProfileName}" TextColor="{StaticResource Gray900}"/>
+                                                    <Span Text=" ✔ "/>
+                                                    <Span Text="{Binding Username}" FontFamily="OpenSansRegular" TextColor="{StaticResource Gray500}"/>
+                                                    <Span Text="{Binding Time}" FontFamily="OpenSansSemibold" TextColor="{StaticResource Gray500}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                    </HorizontalStackLayout>
+
+                                    <VerticalStackLayout Margin="50, -20, 0, 0" Spacing="8">
+                                        <Label Text="Praesent et commodo nulla😂, auctor pharetra nisi. Sed bibendum ligula vitae velit placerat🙌, eu congue metus finibus."
+                                           FontSize="Body"
+                                           LineBreakMode="WordWrap"
+                                           MaxLines="3"/>
+                                        <Frame CornerRadius="10" BorderColor="LightGray" HasShadow="True" MaximumHeightRequest="400" Padding="-2">
+                                            <Image Source="{Binding Image}" Aspect="AspectFill" />
+                                        </Frame>
+
+                                        <HorizontalStackLayout HeightRequest="22" HorizontalOptions="Start" MinimumHeightRequest="22" Spacing="35">
+                                            <Label FontFamily="Arial" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span TextColor="{StaticResource Gray600}" FontSize="16" FontFamily="FaRegular" Text="{x:Static models:FaRegularIcons.Comment}"/>
+                                                        <Span FontSize="10" Text=" "/>
+                                                        <Span TextColor="{StaticResource Gray600}" FontSize="13" FontFamily="OpenSansRegular" Text="300"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+
+                                            <Label FontFamily="Arial" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span TextColor="{StaticResource Gray600}" FontSize="16" FontFamily="FaRegular" Text="{x:Static models:FaRegularIcons.Clipboard}"/>
+                                                        <Span FontSize="10" Text=" "/>
+                                                        <Span TextColor="{StaticResource Gray600}" FontSize="13" FontFamily="OpenSansRegular" Text="20"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+
+                                            <Label FontFamily="Arial" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span TextColor="{StaticResource Gray600}" FontSize="16" FontFamily="FaRegular" Text="{x:Static models:FaRegularIcons.Heart}"/>
+                                                        <Span FontSize="10" Text=" "/>
+                                                        <Span TextColor="{StaticResource Gray600}" FontSize="13" FontFamily="OpenSansRegular" Text="2460"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+
+                                            <Label FontFamily="Arial" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span TextColor="{StaticResource Gray600}" FontSize="16" FontFamily="FaRegular" Text="{x:Static models:FaRegularIcons.ThumbsDown}"/>
+                                                        <Span FontSize="10" Text=" "/>
+                                                        <Span TextColor="{StaticResource Gray600}" FontSize="13" FontFamily="OpenSansRegular" Text="60"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+
+                                            <Label FontFamily="Arial" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span TextColor="{StaticResource Gray600}" FontSize="16" FontFamily="FaRegular" Text="{x:Static models:FaRegularIcons.ShareFromSquare}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+
+
+                                        </HorizontalStackLayout>
+                                    </VerticalStackLayout>
+                                </StackLayout>
+                                <BoxView Color="LightGray" HeightRequest="1" HorizontalOptions="FillAndExpand" Margin="-16,0"/>
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <VerticalStackLayout Padding="10, 8, 10, 0" Spacing="10">
+                    <!-- Blog Post 1 -->
+                    <StackLayout>
+
+                        <HorizontalStackLayout Spacing="8">
+                            <Frame
+                                            Padding="1, -10, 1, -10" CornerRadius="30"
+                                            MinimumHeightRequest="43" HeightRequest="43" MaximumHeightRequest="100"
+                                            MinimumWidthRequest="43" WidthRequest="43" MaximumWidthRequest="100"
+                                            HorizontalOptions="Start" VerticalOptions="Start">
+
+                                <Image Source="https://i.pinimg.com/564x/bf/2e/28/bf2e2856b8da4bb05f8e44a1719b6cab.jpg" Aspect="AspectFill"/>
+                            </Frame>
+
+                            <Label FontSize="15"
+                                           HorizontalOptions="Start"
+                                           Margin="0, 2, 0, 0">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Mr Jeiy" TextColor="{StaticResource Gray900}"/>
+                                        <Span Text=" ✔ "/>
+                                        <Span Text="@jeiytech" FontFamily="OpenSansRegular" TextColor="{StaticResource Gray500}"/>
+                                        <Span Text=" . 10" FontFamily="OpenSansSemibold" TextColor="{StaticResource Gray500}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                        </HorizontalStackLayout>
+
+                        <VerticalStackLayout Margin="50, -20, 0, 0" Spacing="8">
+                            <Label Text="Praesent et commodo nulla😂, auctor pharetra nisi. Sed bibendum ligula vitae velit placerat🙌, eu congue metus finibus."
+                                           FontSize="Body"
+                                           LineBreakMode="WordWrap"
+                                           MaxLines="3"/>
+                            <Frame CornerRadius="10" BorderColor="LightGray" HasShadow="True" MaximumHeightRequest="400" Padding="-2">
+                                <toolkit:MediaElement 
+                                    x:Name="mediaElement"
+                                    ShouldShowPlaybackControls="True"
+                                    Source="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                                    Aspect="AspectFill"/>
+                            </Frame>
+
+                            <HorizontalStackLayout HeightRequest="22" HorizontalOptions="Start" MinimumHeightRequest="22" Spacing="35">
+                                <Label FontFamily="Arial" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span TextColor="{StaticResource Gray600}" FontSize="16" FontFamily="FaRegular" Text="{x:Static models:FaRegularIcons.Comment}"/>
+                                            <Span FontSize="10" Text=" "/>
+                                            <Span TextColor="{StaticResource Gray600}" FontSize="13" FontFamily="OpenSansRegular" Text="300"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                                <Label FontFamily="Arial" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span TextColor="{StaticResource Gray600}" FontSize="16" FontFamily="FaRegular" Text="{x:Static models:FaRegularIcons.Clipboard}"/>
+                                            <Span FontSize="10" Text=" "/>
+                                            <Span TextColor="{StaticResource Gray600}" FontSize="13" FontFamily="OpenSansRegular" Text="20"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                                <Label FontFamily="Arial" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span TextColor="{StaticResource Gray600}" FontSize="16" FontFamily="FaRegular" Text="{x:Static models:FaRegularIcons.Heart}"/>
+                                            <Span FontSize="10" Text=" "/>
+                                            <Span TextColor="{StaticResource Gray600}" FontSize="13" FontFamily="OpenSansRegular" Text="2460"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                                <Label FontFamily="Arial" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span TextColor="{StaticResource Gray600}" FontSize="16" FontFamily="FaRegular" Text="{x:Static models:FaRegularIcons.ThumbsDown}"/>
+                                            <Span FontSize="10" Text=" "/>
+                                            <Span TextColor="{StaticResource Gray600}" FontSize="13" FontFamily="OpenSansRegular" Text="60"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                                <Label FontFamily="Arial" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span TextColor="{StaticResource Gray600}" FontSize="16" FontFamily="FaRegular" Text="{x:Static models:FaRegularIcons.ShareFromSquare}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </StackLayout>
+                    <BoxView Color="LightGray" HeightRequest="1" HorizontalOptions="FillAndExpand" Margin="-16,0"/>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
